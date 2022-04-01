@@ -1,0 +1,17 @@
+.audio {
+    top: 0px;
+    right: 0px;
+    position: fixed;
+}
+
+body {
+    overflow: hidden;
+    position: relative;
+    min-height: 525px;
+    background: #4b3f64;
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+    background: -webkit-linear-gradient(to bottom right, #b968c5, skyblue);
+    background: linear-gradient(to bottom right, #b968c5, skyblue);
+}
