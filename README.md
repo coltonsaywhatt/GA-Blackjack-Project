@@ -25,4 +25,4 @@ More info in [Wikipedia](https://en.wikipedia.org/wiki/Blackjack)
 
 ## License
 
-\* See [license.txt](https://github.com/coltonsaywhatt/GA-Blackjack-Project/LICENSE.text) for usage details.
+\* See [license.txt](https://github.com/coltonsaywhatt/GA-Blackjack-Project/blob/main/index.html) for usage details.
