@@ -1,19 +1,12 @@
 /*----- constants -----*/
 const suits = ["Clubs", "Diamonds", "Hearts", "Spades"];
 const faces = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"];
-const dealer = 'dealer';
-const player = 'player';
-let deck = [];
-const playerHand = new hand();
-const dealerHand = new hand();
-let winCount = {
-    player:0,
-    dealer:0
-}
 
 
 /*----- app's state (variables) -----*/
-
+let deck = [];
+let playerHand = new hand();
+let dealerHand = new hand();
 
 /*----- cached element references -----*/
 
@@ -70,4 +63,19 @@ function checkScore() {
 
 function playAgain() {
 
+}
+
+function dealerTurn() {
+    if(playerHand.value < 22) {
+        if(computerHand.value < 17) {
+          dealerHit();
+          dealerTurn();
+        }
+        else {
+          checkScore();
+        }
+      }
+      else {
+        checkScore();
+      }
 }
