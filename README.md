@@ -1,3 +1,15 @@
+<p align="center">
+![](https://img.shields.io/github/followers/coltonsaywhatt?style=social)
+![](https://img.shields.io/github/forks/coltonsaywhatt/GA-Blackjack-Project?style=social)
+![](https://img.shields.io/badge/Code-JavaScript-informational?style=flat&logo=JavaScript&color=F7DF1E)
+![](https://img.shields.io/badge/Code-HTML5-informational?style=flat&logo=HTML5&color=E34F26)
+![](https://img.shields.io/github/last-commit/coltonsaywhatt/GA-Blackjack-Project)
+![](https://img.shields.io/github/license/coltonsaywhatt/GA-Blackjack-Project)
+[![Visitors](https://visitor-badge.glitch.me/badge?page_id=coltonsaywhatt.coltonsaywhatt)]
+</p>
+
+
+
 1) Define required constants
 
 2) Define required state variable 
