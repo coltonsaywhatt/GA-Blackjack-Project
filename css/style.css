@@ -8,21 +8,23 @@
 
 .btn {
 	margin-bottom: 16px;
-	padding: 8px 24px;
+	padding: 8px 15px;
 	min-width: 100px;
 	background-color: #fff;
-	border: 2px solid #fff;
+	border: 1px solid rgb(0, 0, 0);
 	border-radius: 15px;
 	color: #000;
 	letter-spacing: 4px;
 	text-transform: uppercase;
 	white-space: nowrap;
+    cursor: pointer;
 }
 
-.btn:hover {
-	background-color: transparent;
-	color: #b968c5;
-}
+.btn:active {
+    background-color: transparent;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
 
 .table {
 	position: relative;
@@ -33,10 +35,14 @@
 	transform: translateX(-50%);
 	perspective: 100vw;
 }
+img {
+    height: 200px;
+    
+}
 
 .table_dealer, .table_player {
 	position: relative;
-	margin-bottom: 16px;
+	margin-bottom: 100px;
 	padding: 24px;
 	border: 4px dashed #fff;
 }
