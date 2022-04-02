@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/card-deck-css/css/cardstarter.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/style.css">
     <script defer href="js/main.js"></script>
     <title>GA Blackjack Project</title>
@@ -12,12 +13,20 @@
     <div class="blackjack">        
             <div class='table'>
                 <div class='table_dealer'>
-                    <img src="https://freepikpsd.com/file/2019/10/playing-card-back-png-3-Transparent-Images.png">
-                    <img src="https://freepikpsd.com/file/2019/10/playing-card-back-png-3-Transparent-Images.png">
+                    <div id="dealer-cards">
+                        <!-- Cards will appear here. -->
+                        <img src="https://freepikpsd.com/file/2019/10/playing-card-back-png-3-Transparent-Images.png">
+                        <img src="https://freepikpsd.com/file/2019/10/playing-card-back-png-3-Transparent-Images.png">
+                    </div>
+                </div>
+                <div class='fdDeck'>                    
                 </div>
                 <div class='table_player'>
-                    <img src="https://freepikpsd.com/file/2019/10/playing-card-back-png-3-Transparent-Images.png">
-                    <img src="https://freepikpsd.com/file/2019/10/playing-card-back-png-3-Transparent-Images.png">
+                    <div id="player-cards">
+                        <!-- Cards will appear here. -->
+                        <img src="https://freepikpsd.com/file/2019/10/playing-card-back-png-3-Transparent-Images.png">
+                        <img src="https://freepikpsd.com/file/2019/10/playing-card-back-png-3-Transparent-Images.png">
+                    </div>
                 </div>
                 <button class='btn btn-hit'>&#9824 Hit</button>
                 <button class='btn btn-stay'>&#9827 Stand</button>

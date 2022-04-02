@@ -2,14 +2,15 @@
 <img alt="GitHub followers" src="https://img.shields.io/github/followers/coltonsaywhatt?style=social">
 <img alt="GitHub forks" src="https://img.shields.io/github/forks/coltonsaywhatt/GA-Blackjack-Project?style=social">
 <br>
+<img alt="HTML5" src="https://img.shields.io/badge/Code-HTML5-informational?style=flat&logo=HTML5&color=E34F26">
+<img alt="CSS" src="https://img.shields.io/badge/code-CSS3-blue?style=flat&logo=css3&logoColor=blue">
 <img alt="JS" src="https://img.shields.io/badge/Code-JavaScript-informational?style=flat&logo=JavaScript&color=F7DF1E">
-<img alt="GitHub HTML5" src="https://img.shields.io/badge/Code-HTML5-informational?style=flat&logo=HTML5&color=E34F26">
 <img alt="GitHub commits" src="https://img.shields.io/github/last-commit/coltonsaywhatt/GA-Blackjack-Project">
 <img alt="MIT License" src="https://img.shields.io/github/license/coltonsaywhatt/GA-Blackjack-Project">
 <img alt="GitHub visitors" src="https://visitor-badge.glitch.me/badge?page_id=coltonsaywhatt.coltonsaywhatt">
 </p>
 
-
+### Pseudocode
 
 1) Define required constants
 
