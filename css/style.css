@@ -44,14 +44,13 @@ img {
 	position: relative;
 	margin-bottom: 100px;
 	padding: 24px;
-	border: 4px dashed #fff;
+	border: 4px dotted #fff;
 }
 
 body {
     overflow: hidden;
     position: relative;
     min-height: 525px;
-    background: #4b3f64;
     height: 100vh;
     width: 100vw;
     overflow: hidden;
