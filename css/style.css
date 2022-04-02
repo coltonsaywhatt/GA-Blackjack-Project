@@ -12,11 +12,16 @@
 	min-width: 100px;
 	background-color: #fff;
 	border: 2px solid #fff;
-	border-radius: 0;
+	border-radius: 15px;
 	color: #000;
 	letter-spacing: 4px;
 	text-transform: uppercase;
 	white-space: nowrap;
+}
+
+.btn:hover {
+	background-color: transparent;
+	color: #b968c5;
 }
 
 .table {
@@ -29,7 +34,7 @@
 	perspective: 100vw;
 }
 
-.table__dealer, .table__user {
+.table_dealer, .table_player {
 	position: relative;
 	margin-bottom: 16px;
 	padding: 24px;
@@ -44,6 +49,5 @@ body {
     height: 100vh;
     width: 100vw;
     overflow: hidden;
-    background: -webkit-linear-gradient(to bottom right, #b968c5, skyblue);
     background: linear-gradient(to bottom right, #b968c5, skyblue);
 }
