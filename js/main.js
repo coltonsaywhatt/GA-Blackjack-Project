@@ -9,10 +9,22 @@ let playerHand = new hand();
 let dealerHand = new hand();
 
 /*----- cached element references -----*/
-
+let newGameButton = document.getElementById('new-game-button');
+let hitButton = document.getElementById('hit-button');
+let stayButton = document.getElementById('stay-button');
 
 /*----- event listeners -----*/
+hitButton.addEventListener('click', function() {
 
+});
+
+stayButton.addEventListener('click', function() {
+
+});
+
+newGameButton.addEventListener('click', function() {
+
+});
 
 /*----- functions -----*/
 
@@ -78,4 +90,8 @@ function dealerTurn() {
       else {
         checkScore();
       }
+}
+
+function dealerHit() {
+  
 }

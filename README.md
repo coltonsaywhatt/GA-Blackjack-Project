@@ -1,4 +1,6 @@
 <p align="center">
+<img alt="Project Logo" src="https://i.ibb.co/7XzBkRM/bk-logo.png">
+<br> 
 <img alt="GitHub followers" src="https://img.shields.io/github/followers/coltonsaywhatt?style=social">
 <img alt="GitHub forks" src="https://img.shields.io/github/forks/coltonsaywhatt/GA-Blackjack-Project?style=social">
 <br>
@@ -10,22 +12,38 @@
 <img alt="GitHub visitors" src="https://visitor-badge.glitch.me/badge?page_id=coltonsaywhatt.coltonsaywhatt">
 </p>
 
-### Pseudocode
+## Pseudocode
 
-1) Define required constants
+1. Define required constants:
+Such as a array that will hold our suits and classes of the cards.
 
-2) Define required state variable 
+2. Define required state variable:
+We will need a deck object that will hold a empty array. Then we need to make our player hand and dealer hand hold a empty array. 
 
-3) deal hand
+3. hide hit and stand button until cards are dealt
+deal button to start the game
+hide deal button untill new game starts
 
-4) hit or stand
-    4.1)
+4. deal hand
 
-    4.2) show value total on card hover both player and dealer)
+5. dealer card 1 face up 1 face down
 
-5) Handle deck shuffle
+6. hit/draw card or stand logic
 
-6) Check for blackjack
+dealer logic to hit if you stand
+add delay for dealer to hit for more suspense
+
+7. get card value
+show value total on card hover both player and dealer)
+
+8. Check for blackjack
+win/loss/draw
+
+9. Handle deck shuffle
+
+10. game restart function
+reset the playing area and reset all state varibles to deafult
+
 
 ### Blacjack Game overview:
 
