@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/card-deck-css/css/cardstarter.css" rel="stylesheet" />
     <link rel="stylesheet" href="css/style.css">
-    <script defer href="js/main.js"></script>
+    <script defer src="js/main.js"></script>
     <title>GA Blackjack Project</title>
 </head>
 <body>
@@ -19,7 +19,10 @@
                         <img src="https://freepikpsd.com/file/2019/10/playing-card-back-png-3-Transparent-Images.png">
                     </div>
                 </div>
-                <div id='master-deck'>                    
+                <div class='table_middle'>
+                    <div id="master-deck" class="card-container">
+                        <div class="card back"></div>
+                    </div>                        
                 </div>
                 <div class='table_player'>
                     <div id="player-cards">
@@ -28,13 +31,17 @@
                         <img src="https://freepikpsd.com/file/2019/10/playing-card-back-png-3-Transparent-Images.png">
                     </div>
                 </div>
-                <button id="hit-button" class='btn btn-hit'>&#9824 Hit</button>
-                <button id="stay-button" class='btn btn-stay'>&#9827 Stand</button>
-                <div class='gameover'>
-                    <div class='gameover_msg'>
-                        <button id="new-game-button" class='btn btn-reset'>&#9829 Play Again</button>
+                <div class="btn_table"">
+                    <button id="hit-button" class='btn-hit'>&#9824 Hit</button>
+                    <button id="stay-button" class='btn-stay'>&#9827 Stand</button>
+                    <br>
+                    <button id="deal-button" class='btn-deal'>&#x1F0AD; Deal</button>
+                    <div class='gameover'>
+                        <div class='gameover_msg'>
+                            <button id="playAgain-button" class='btn-playAgain'>Play Again</button>
+                        </div>
                     </div>
-                </div>
+                </div>    
             </div>               
             </div>
 
