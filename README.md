@@ -5,7 +5,7 @@
 <img alt="GitHub forks" src="https://img.shields.io/github/forks/coltonsaywhatt/GA-Blackjack-Project?style=social">
 <br>
 <img alt="HTML5" src="https://img.shields.io/badge/Code-HTML5-informational?style=flat&logo=HTML5&color=E34F26">
-<img alt="CSS" src="https://img.shields.io/badge/code-CSS3-blue?style=flat&logo=css3&logoColor=blue">
+<img alt="CSS" src="https://img.shields.io/badge/Code-CSS3-blue?style=flat&logo=css3&logoColor=blue">
 <img alt="JS" src="https://img.shields.io/badge/Code-JavaScript-informational?style=flat&logo=JavaScript&color=F7DF1E">
 <img alt="GitHub commits" src="https://img.shields.io/github/last-commit/coltonsaywhatt/GA-Blackjack-Project">
 <img alt="MIT License" src="https://img.shields.io/github/license/coltonsaywhatt/GA-Blackjack-Project">
@@ -57,4 +57,4 @@ More info in [Wikipedia](https://en.wikipedia.org/wiki/Blackjack)
 
 ## License
 
-\* See [license.txt](https://github.com/coltonsaywhatt/GA-Blackjack-Project/blob/main/index.html) for usage details.
+\* See [license.txt](https://github.com/coltonsaywhatt/GA-Blackjack-Project/blob/main/LICENSE.text) for usage details.
