@@ -5,7 +5,7 @@ const masterDeck = buildMasterDeck();
 
 
 /*----- app's state (variables) -----*/
-let deck = [];
+// let deck = [];
 let playerCards = [];
 let dealerCards = [];
 let shuffledDeck = [];
@@ -64,13 +64,10 @@ function buildMasterDeck() {
 }
 
 function getNewShuffledDeck() {
-    // Create a copy of the masterDeck (leave masterDeck untouched!)
     const tempDeck = [...masterDeck];
     const newShuffledDeck = [];
     while (tempDeck.length) {
-      // Get a random index for a card still in the tempDeck
       const rndIdx = Math.floor(Math.random() * tempDeck.length);
-      // Note the [0] after splice - this is because splice always returns an array and we just want the card object in that array
       newShuffledDeck.push(tempDeck.splice(rndIdx, 1)[0]);
     }
     return newShuffledDeck;
