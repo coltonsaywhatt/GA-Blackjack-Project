@@ -25,7 +25,11 @@ stayButton.addEventListener('click', function() {
 
 });
 
-newGameButton.addEventListener('click', function() {
+dealButton.addEventListener('click', function() {
+
+});
+
+playButton.addEventListener('click', function() {
 
 });
 

@@ -6,12 +6,12 @@
     position: fixed;
 }
 
-.btn-table {
-	margin: 30px;
+.btn_table {
+	margin-top: 20px;
 }
 
 button {
-	margin: 10px;
+	margin: 5px;
 	padding: 8px 15px;
 	min-width: 100px;
 	background-color: #fff;
@@ -41,7 +41,8 @@ button:active {
 	padding: 14px;
 }
 img {
-    height: 150px;    
+    width: 8.0em;
+  	height: 11em;   
 }
 
 .table_middle {
