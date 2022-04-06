@@ -27,12 +27,12 @@ let dealerCardContainer = document.getElementById('dealer-cards')
 
 /*----- event listeners -----*/
 hitButton.addEventListener('click', function() {
-  playerCards.push(getNextCard());
+  //playerCards.push(getNextCard());
   checkBj();
 });
 
 stayButton.addEventListener('click', function() {
-  gameOver = true;
+  // gameOver = true;
   checkBj();
 });
 
@@ -42,9 +42,6 @@ dealButton.addEventListener('click', function() {
   playButton.style.display = 'none';
   dealButton.style.display = 'none';
 
-  dealerCards = [getNextCard(), getNextCard()];
-  playerCards = [getNextCard(), getNextCard()];
-  render();
 });
 
 playButton.addEventListener('click', function() {
@@ -63,13 +60,11 @@ function init() {
   stayButton.style.display = 'none';
   playButton.style.display = 'none';
   shuffledDeck = getNewShuffledDeck();
-
+  render();
 }
 
 function render() {
-  console.log(shuffledDeck)
   renderPlayerHand();
-
   // renderDealerHand();
 }
 
@@ -123,6 +118,14 @@ function getNextCard() {
   return shuffledDeck.shift();
 }
 
+function hit {
+  dealerCards = [getNextCard(), getNextCard()];
+  playerCards = [getNextCard(), getNextCard()];
+}
+
+function dealCards {
+
+}
 
 
 
