@@ -312,7 +312,6 @@
 
 .card.back {
   background-image: url("../images/backs/card.png");
-  box-shadow: 3px 3px 4px black; 
 }
 
 .card.back-blue {
