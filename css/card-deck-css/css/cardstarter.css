@@ -305,13 +305,15 @@
   background-image: url("../images/jokers/joker.svg"); }
 
 .card.joker-black {
-  background-image: url("../images/jokers/joker-black.svg"); }
+  background-image: url("../images/jokers/joker-black.svg");}
 
 .card.joker-red {
   background-image: url("../images/jokers/joker-red.svg"); }
 
 .card.back {
-  background-image: url("../images/backs/card.png"); }
+  background-image: url("../images/backs/card.png");
+  box-shadow: 3px 3px 4px black; 
+}
 
 .card.back-blue {
   background-image: url("../images/backs/blue.svg"); }

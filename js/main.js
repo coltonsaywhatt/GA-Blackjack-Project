@@ -1,29 +1,34 @@
 /*----- constants -----*/
-const suits = ["Clubs", "Diamonds", "Hearts", "Spades"];
-const faces = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"];
+const suits = ['Clubs', 'Diamonds', 'Hearts', 'Spades'];
+const faces = ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K'];
 const masterDeck = buildMasterDeck();
 
-
 /*----- app's state (variables) -----*/
-// let deck = [];
 let gamesStarted = false;
 let gameOver = false;
 let playerWon = false;
+
 let playerCards = [];
 let dealerCards = [];
+
 let dealerScore = 0;
 let playerScore = 0;
-let shuffledDeck = [];
+
+let shuffledDeck;
+let value;
 
 /*----- cached element references -----*/
 let dealButton = document.querySelector('#deal-button');
 let hitButton = document.querySelector('#hit-button');
 let stayButton = document.querySelector('#stay-button');
 let playButton = document.querySelector('#playAgain-button');
+let playerCardContainer = document.getElementById('player-cards')
+let dealerCardContainer = document.getElementById('dealer-cards')
 
 /*----- event listeners -----*/
 hitButton.addEventListener('click', function() {
-  return shuffledDeck.shift();
+  playerCards.push(getNextCard());
+  checkBj();
 });
 
 stayButton.addEventListener('click', function() {
@@ -37,6 +42,9 @@ dealButton.addEventListener('click', function() {
   playButton.style.display = 'none';
   dealButton.style.display = 'none';
 
+  dealerCards = [getNextCard(), getNextCard()];
+  playerCards = [getNextCard(), getNextCard()];
+  render();
 });
 
 playButton.addEventListener('click', function() {
@@ -48,18 +56,21 @@ playButton.addEventListener('click', function() {
 
 /*----- functions -----*/
 
-startGame();
+init();
 
-function startGame() {
+function init() {
   hitButton.style.display = 'none';
   stayButton.style.display = 'none';
   playButton.style.display = 'none';
-  deck = getNewShuffledDeck();
-  render();
+  shuffledDeck = getNewShuffledDeck();
+
 }
 
 function render() {
-  console.log(deck)
+  console.log(shuffledDeck)
+  renderPlayerHand();
+
+  // renderDealerHand();
 }
 
 
@@ -87,50 +98,53 @@ function getNewShuffledDeck() {
   }
 
 
+// player.Cards[0].value + playerCards[1].value
+// creating a new div element
+// we are creating a variable that is storing our class name to ref face value of our object which will be added to our div
+// creating a card variable that creates a div that is added to our player container
+// 
+function renderPlayerHand() {
+  playerCards.forEach(function(playerCard) {
+    const cardEl = document.createElement('div');
+    cardEl.className = `playerCard ${playerCard.face}`;
+    playerCardContainer.appendChild(cardEl);
+    console.log(playerCard)
+    // $('#player-cards').appendChild('<div class="player-value">' + dealerCards + '</div');
 
-function playerHand() {
+  });
     
 }
 
-function dealerHand() {
+function renderDealerHand() {
 
 }
 
-function getScore(cardArray) {
-  let score = 0;
-  let hasAce = false;
-  for (let i = 0; i < cardArray.length; i++) {
-      let card = cardArray[i];
-      score += getCardNumericValue(card);
-      if (card.value === 'Ace') {
-          hasAce = true;
-      }
-  }
-  if (hasAce && score + 10 <= 21) {
-      return score + 10;
-  }
-  return score;
+function getNextCard() {
+  return shuffledDeck.shift();
 }
+
+
+
 
 function getCardValue(card) {
-  switch (card.value) {
-    case "Ace":
+  switch (card.rank) {
+    case 'A':
       return 1;
-    case "Two":
+    case 2:
       return 2;
-    case "Three":
+    case 3:
       return 3;
-    case "Four":
+    case 4:
       return 4;
-    case "Five":
+    case 5:
       return 5;
-    case "Six":
+    case 6:
       return 6;
-    case "Seven":
+    case 7:
       return 7;
-    case "Eight":
+    case 8:
       return 8;
-    case "Nine":
+    case 9:
       return 9;
     default:
       return 10;
@@ -143,7 +157,7 @@ function getScore(cardArray) {
   for (let i = 0; i < cardArray.length; i++) {
     let card = cardArray[i];
     score += getCardValue(card);
-    if (card.value === "Ace") {
+    if (card === "Ace") {
       hasAce = true;
     }
   }
@@ -154,9 +168,15 @@ function getScore(cardArray) {
 }
 
 function updateScores() {
-  dealerScore = getScore(dealerCards);
-  playerScore = getScore(playerCards);
+  let dealerScore = getScore(dealerCards);
+  let playerScore = getScore(playerCards);
 }
+
+
+
+
+
+
 
 function checkBj() {
   updateScores();
@@ -184,3 +204,12 @@ function checkBj() {
 function playAgain() {
 
 }
+
+function showPlayerValue() {
+  $('.player-cards').appendChild('<div class="player-value">' + playerCards + '</div');
+}
+
+function showDealerValue() {
+  $('.dealer-cards').appendChild('<div class="computer-value">' + dealerCards + '</div');
+}
+
