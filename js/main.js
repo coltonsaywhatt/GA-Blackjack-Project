@@ -1,6 +1,6 @@
 /*----- constants -----*/
-const suits = ['Clubs', 'Diamonds', 'Hearts', 'Spades'];
-const faces = ['A', 2, 3, 4, 5, 6, 7, 8, 9, 10, 'J', 'Q', 'K'];
+const suits = ['c', 'd', 'h', 's'];
+const faces = ['A', '02', '03', '04', '05', '06', '07', '08', '09', '10', 'J', 'Q', 'K'];
 const masterDeck = buildMasterDeck();
 
 /*----- app's state (variables) -----*/
@@ -26,30 +26,23 @@ let playerCardContainer = document.getElementById('player-cards')
 let dealerCardContainer = document.getElementById('dealer-cards')
 
 /*----- event listeners -----*/
-hitButton.addEventListener('click', function() {
-  //playerCards.push(getNextCard());
-  checkBj();
-});
 
-stayButton.addEventListener('click', function() {
+// DO NOT TOUCH!!!!!!
+
+hitButton.addEventListener('click', hit);
+
+
+stayButton.addEventListener('click', stay);
   // gameOver = true;
-  checkBj();
-});
 
-dealButton.addEventListener('click', function() {
-  hitButton.style.display = 'inline';
-  stayButton.style.display = 'inline';
-  playButton.style.display = 'none';
-  dealButton.style.display = 'none';
+dealButton.addEventListener('click', dealCards);
 
-});
 
-playButton.addEventListener('click', function() {
-  gamesStarted = true;
-  gameOver = false;
-  playerWon = false;
+playButton.addEventListener('click', playAgain)
+  // gamesStarted = true;
+  // gameOver = false;
+  // playerWon = false;
 
-});
 
 /*----- functions -----*/
 
@@ -101,9 +94,11 @@ function getNewShuffledDeck() {
 function renderPlayerHand() {
   playerCards.forEach(function(playerCard) {
     const cardEl = document.createElement('div');
-    cardEl.className = `playerCard ${playerCard.face}`;
+    // giving a class name 
+    cardEl.className = `card ${playerCard.face}`;
     playerCardContainer.appendChild(cardEl);
-    console.log(playerCard)
+    console.log(`"playerCard" ${playerCard.face}`)
+    
     // $('#player-cards').appendChild('<div class="player-value">' + dealerCards + '</div');
 
   });
@@ -118,101 +113,113 @@ function getNextCard() {
   return shuffledDeck.shift();
 }
 
-function hit {
+function hit() {
+  playerCards.push(getNextCard());
+}
+
+function dealCards() {
+  hitButton.style.display = 'inline';
+  stayButton.style.display = 'inline';
+  playButton.style.display = 'none';
+  dealButton.style.display = 'none';
+
   dealerCards = [getNextCard(), getNextCard()];
   playerCards = [getNextCard(), getNextCard()];
+
+  render();
+  // checkBj();
 }
 
-function dealCards {
-
-}
-
-
-
-function getCardValue(card) {
-  switch (card.rank) {
-    case 'A':
-      return 1;
-    case 2:
-      return 2;
-    case 3:
-      return 3;
-    case 4:
-      return 4;
-    case 5:
-      return 5;
-    case 6:
-      return 6;
-    case 7:
-      return 7;
-    case 8:
-      return 8;
-    case 9:
-      return 9;
-    default:
-      return 10;
-  }
-}
-
-function getScore(cardArray) {
-  let score = 0;
-  let hasAce = false;
-  for (let i = 0; i < cardArray.length; i++) {
-    let card = cardArray[i];
-    score += getCardValue(card);
-    if (card === "Ace") {
-      hasAce = true;
-    }
-  }
-  if (hasAce && score + 10 <= 21) {
-    return score + 10;
-  }
-  return score;
-}
-
-function updateScores() {
-  let dealerScore = getScore(dealerCards);
-  let playerScore = getScore(playerCards);
+function stay() {
+  // checkBj();
 }
 
 
 
+// function getCardValue(card) {
+//   switch (card.rank) {
+//     case 'A':
+//       return 1;
+//     case 2:
+//       return 2;
+//     case 3:
+//       return 3;
+//     case 4:
+//       return 4;
+//     case 5:
+//       return 5;
+//     case 6:
+//       return 6;
+//     case 7:
+//       return 7;
+//     case 8:
+//       return 8;
+//     case 9:
+//       return 9;
+//     default:
+//       return 10;
+//   }
+// }
+
+// function getScore(cardArray) {
+//   let score = 0;
+//   let hasAce = false;
+//   for (let i = 0; i < cardArray.length; i++) {
+//     let card = cardArray[i];
+//     score += getCardValue(card);
+//     if (card === "Ace") {
+//       hasAce = true;
+//     }
+//   }
+//   if (hasAce && score + 10 <= 21) {
+//     return score + 10;
+//   }
+//   return score;
+// }
+
+// function updateScores() {
+//   let dealerScore = getScore(dealerCards);
+//   let playerScore = getScore(playerCards);
+// }
 
 
 
 
-function checkBj() {
-  updateScores();
-    if(gameOver) {
-        while(dealerScore < playerScore && playerScore <= 21 && dealerScore <= 21) {
-            dealerCards.push(getNextCard());
-            updateScores();
-        }
-    }
-    if (playerScore > 21) {
-        playerWon = false;
-        gameOver = true;
-    } else if (dealerScore > 21) {
-        playerWon = true;
-        gameOver = true;
-    } else if (gameOver) {
-        if (playerScore > dealerScore) {
-            playerWon = true;
-        } else {
-            playerWon = false;
-        }
-    }
-}
+
+
+
+// function checkBj() {
+//   updateScores();
+//     if(gameOver) {
+//         while(dealerScore < playerScore && playerScore <= 21 && dealerScore <= 21) {
+//             dealerCards.push(getNextCard());
+//             updateScores();
+//         }
+//     }
+//     if (playerScore > 21) {
+//         playerWon = false;
+//         gameOver = true;
+//     } else if (dealerScore > 21) {
+//         playerWon = true;
+//         gameOver = true;
+//     } else if (gameOver) {
+//         if (playerScore > dealerScore) {
+//             playerWon = true;
+//         } else {
+//             playerWon = false;
+//         }
+//     }
+// }
 
 function playAgain() {
 
 }
 
-function showPlayerValue() {
-  $('.player-cards').appendChild('<div class="player-value">' + playerCards + '</div');
-}
+// function showPlayerValue() {
+//   $('.player-cards').appendChild('<div class="player-value">' + playerCards + '</div');
+// }
 
-function showDealerValue() {
-  $('.dealer-cards').appendChild('<div class="computer-value">' + dealerCards + '</div');
-}
+// function showDealerValue() {
+//   $('.dealer-cards').appendChild('<div class="computer-value">' + dealerCards + '</div');
+// }
 
