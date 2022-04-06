@@ -58,7 +58,7 @@ function init() {
 
 function render() {
   renderPlayerHand();
-  // renderDealerHand();
+  renderDealerHand();
 }
 
 
@@ -97,7 +97,7 @@ function renderPlayerHand() {
     // giving a class name 
     cardEl.className = `card ${playerCard.face}`;
     playerCardContainer.appendChild(cardEl);
-    console.log(`"playerCard" ${playerCard.face}`)
+    //console.log(`"playerCard" ${playerCard.face}`)
     
     // $('#player-cards').appendChild('<div class="player-value">' + dealerCards + '</div');
 
@@ -106,6 +106,11 @@ function renderPlayerHand() {
 }
 
 function renderDealerHand() {
+  dealerCards.forEach(function(dealerCard) {
+    const CardEl = document.createElement('div');
+    cardEl.className = `card ${dealerCard.face}`;
+    dealerCardContainer.appendChild(cardEl);    
+  })
 
 }
 
@@ -115,6 +120,7 @@ function getNextCard() {
 
 function hit() {
   playerCards.push(getNextCard());
+  render();
 }
 
 function dealCards() {
