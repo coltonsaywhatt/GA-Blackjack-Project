@@ -3,14 +3,14 @@ const suits = ['c', 'd', 'h', 's'];
 const faces = ['A', '02', '03', '04', '05', '06', '07', '08', '09', '10', 'J', 'Q', 'K'];
 const masterDeck = buildMasterDeck();
 
-const MSG_LOOKUP = {
-  null: 'Good Luck!',
-  'T': "It's a Push",
-  'P': 'Player Wins!',
-  'D': 'Dealer Wins',
-  'PBJ': 'Player Has Blackjack 😃',
-  'DBJ': 'Dealer Has Blackjack 😔',
-};
+// const MSG_LOOKUP = {
+//   null: 'Good Luck!',
+//   'T': "It's a Push",
+//   'P': 'Player Wins!',
+//   'D': 'Dealer Wins',
+//   'PBJ': 'Player Has Blackjack 😃',
+//   'DBJ': 'Dealer Has Blackjack 😔',
+// };
 
 /*----- app's state (variables) -----*/
 let gamesStarted = false;
@@ -38,6 +38,12 @@ let dealerCardContainer = document.getElementById('dealer-cards')
 const playerTotalEl = document.getElementById('player-total');
 const dealerTotalEl = document.getElementById('dealer-total');
 
+gameOver = (msg, color) => {
+	document.querySelector('.gameOver__msg').setAttribute('data-msg', msg);
+	document.querySelector('.gameOver__msg').style.color = color;
+	document.querySelector('.gameOver').classList.add('active');
+}
+
 /*----- event listeners -----*/
 
 // DO NOT TOUCH!!!!!!
@@ -48,7 +54,7 @@ stayButton.addEventListener('click', stand);
 
 dealButton.addEventListener('click', dealCards);
 
-playButton.addEventListener('click', playAgain)
+// playButton.addEventListener('click', playAgain)
 
 /*----- functions -----*/
 
@@ -57,7 +63,7 @@ init();
 function init() {
   hitButton.style.display = 'none';
   stayButton.style.display = 'none';
-  playButton.style.display = 'none';
+  // playButton.style.display = 'none';
   shuffledDeck = getNewShuffledDeck();
   playerCards = [];
   dealerCards = [];
@@ -69,7 +75,6 @@ function render() {
   renderPlayerHand();
   renderDealerHand();
 }
-
 
 function buildMasterDeck() {
   const deck = [];
@@ -97,7 +102,7 @@ function getNewShuffledDeck() {
 function dealCards() {
   hitButton.style.display = 'inline';
   stayButton.style.display = 'inline';
-  playButton.style.display = 'none';
+  // playButton.style.display = 'none';
   dealButton.style.display = 'none';
 
   gameStarted = true;
@@ -119,33 +124,33 @@ function dealCards() {
 // creating a card variable that creates a div that is added to our player container
 
 function renderPlayerHand() {
-  playerCards.forEach(function(playerCard) {
-    const cardEl = document.createElement('div');
-    cardEl.className = `card ${playerCard.face}`;
-    playerCardContainer.appendChild(cardEl); 
-  })
+  // playerCards.forEach(function(playerCard) {
+  //   const cardEl = document.createElement('div');
+  //   cardEl.className = `card ${playerCard.face}`;
+  //   playerCardContainer.appendChild(cardEl); 
+  // })
 
   playerTotalEl.innerHTML = pTotal;
   
-  // playerHandEl.innerHTML = playerCards.map(card => `<div class="card ${card.face}"></div>`).join('');
+  playerCardContainer.innerHTML = playerCards.map(card => `<div class="card ${card.face}"></div>`).join('');
 }
 
 function renderDealerHand() {
-  dealerCards.forEach(function(dealerCard, idx) {
-    if(idx === 1) {
-      const cardEl = document.createElement('div');
-      cardEl.className = `card back`;
-      dealerCardContainer.appendChild(cardEl);
-    } else {
-      const cardEl = document.createElement('div');
-    cardEl.className = `card ${dealerCard.face}`;
-    dealerCardContainer.appendChild(cardEl); 
-    }       
-  })
+  // dealerCards.forEach(function(dealerCard, idx) {
+  //   if(idx === 1) {
+  //     const cardEl = document.createElement('div');
+  //     cardEl.className = `card back`;
+  //     dealerCardContainer.appendChild(cardEl);
+  //   } else {
+  //     const cardEl = document.createElement('div');
+  //   cardEl.className = `card ${dealerCard.face}`;
+  //   dealerCardContainer.appendChild(cardEl); 
+  //   }       
+  // })
 
   dealerTotalEl.innerHTML = outcome ? dTotal : '??';
 
-  // dealerCardContainer.innerHTML = dealerCards.map((card, idx) => `<div class="card ${idx === 1 && !outcome ? 'back' : card.face}"></div>`).join('');
+  dealerCardContainer.innerHTML = dealerCards.map((card, idx) => `<div class="card ${idx === 1 && !outcome ? 'back' : card.face}"></div>`).join('');
 }
 
 function clearHand() {
@@ -165,13 +170,14 @@ function getNextCard() {
 function hit() {
   clearHand();
   playerCards.push(getNextCard());
-  // checkForBlackJack();
+  pTotal = getHandTotal(playerCards);
+  checkForBlackJack();
   render();
 }
 
 function stand() {
-  // gameOver = true;
-  // checkForBlackJack();
+  gameOver = true;
+  checkForBlackJack();
 }
 
 function getHandTotal(hand) {
@@ -188,31 +194,56 @@ function getHandTotal(hand) {
   return total;
 }
 
-function playAgain() {
 
+function checkForBlackJack() {
+    if(gameOver) {
+        while(dTotal < pTotal && pTotal <= 21 && dTotal <= 21) {
+            dealerCards.push(getNextCard());
+        }
+    }
+    if (pTotal > 21) {
+        playerWon = false;
+        gameOver = true;
+    } else if (dTotal > 21) {
+        playerWon = true;
+        gameOver = true;
+    } else if (gameOver) {
+        if (pTotal > dTotal) {
+            playerWon = true;
+        } else {
+            playerWon = false;
+        }
+    }
 }
 
-
-
-
-
-// function checkForBlackJack() {
-//     if(gameOver) {
-//         while(dealerScore < playerScore && playerScore <= 21 && dealerScore <= 21) {
-//             dealerCards.push(getNextCard());
-//         }
-//     }
-//     if (playerScore > 21) {
-//         playerWon = false;
-//         gameOver = true;
-//     } else if (dealerScore > 21) {
-//         playerWon = true;
-//         gameOver = true;
-//     } else if (gameOver) {
-//         if (playerScore > dealerScore) {
-//             playerWon = true;
-//         } else {
-//             playerWon = false;
-//         }
-//     }
-// }
+function evaluate (type) {
+  switch (type) {
+		case 'player':
+			if (pTotal > 21) {
+				gameOver('Bust!', '#f06');
+				return;
+			} else if (pTotal == 21) {
+				gameOver('You Win!', '#0f8');
+				return;
+			}
+		break;
+			
+		case 'dealer':
+			if (pTotal > 21) {
+				gameOver('You Win!', '#0f8');
+				return;
+			} else if (pTotal == 21) {
+				gameOver('Dealer Wins :(', '#f06');
+				return;
+			} else {
+				if (pTotal > dTotal) {
+					gameOver('You Win!', '#0f8');
+				} else if (pTotal == dTotal) {
+					gameOver('It was a Draw!', '#80f');
+				} else {
+					gameOver('Dealer Wins :(', '#f06');
+				}
+			}
+		break;
+	}
+}
