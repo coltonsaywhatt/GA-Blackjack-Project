@@ -13,7 +13,7 @@ const masterDeck = buildMasterDeck();
 // };
 
 /*----- app's state (variables) -----*/
-let gamesStarted = false;
+let gameStarted = false;
 let gameOver = false;
 let playerWon = false;
 
@@ -38,7 +38,7 @@ let dealerCardContainer = document.getElementById('dealer-cards')
 const playerTotalEl = document.getElementById('player-total');
 const dealerTotalEl = document.getElementById('dealer-total');
 
-gameOver = (msg, color) => {
+const setGameOver = (msg, color) => {
 	document.querySelector('.gameOver__msg').setAttribute('data-msg', msg);
 	document.querySelector('.gameOver__msg').style.color = color;
 	document.querySelector('.gameOver').classList.add('active');
@@ -199,7 +199,11 @@ function checkForBlackJack() {
     if(gameOver) {
         while(dTotal < pTotal && pTotal <= 21 && dTotal <= 21) {
             dealerCards.push(getNextCard());
+            dTotal = getHandTotal(dealerCards);
         }
+        render();
+        evaluate('player');
+        evaluate('dealer');
     }
     if (pTotal > 21) {
         playerWon = false;
@@ -216,32 +220,32 @@ function checkForBlackJack() {
     }
 }
 
-function evaluate (type) {
-  switch (type) {
+function evaluate (user) {
+  switch (user) {
 		case 'player':
 			if (pTotal > 21) {
-				gameOver('Bust!', '#f06');
+				setGameOver('Bust!', '#f06');
 				return;
 			} else if (pTotal == 21) {
-				gameOver('You Win!', '#0f8');
+				setGameOver('You Win!', '#0f8');
 				return;
 			}
 		break;
 			
 		case 'dealer':
 			if (pTotal > 21) {
-				gameOver('You Win!', '#0f8');
+				setGameOver('You Win!', '#0f8');
 				return;
 			} else if (pTotal == 21) {
-				gameOver('Dealer Wins :(', '#f06');
+				setGameOver('Dealer Wins :(', '#f06');
 				return;
 			} else {
 				if (pTotal > dTotal) {
-					gameOver('You Win!', '#0f8');
+					setGameOver('You Win!', '#0f8');
 				} else if (pTotal == dTotal) {
-					gameOver('It was a Draw!', '#80f');
+					setGameOver('It was a Draw!', '#80f');
 				} else {
-					gameOver('Dealer Wins :(', '#f06');
+					setGameOver('Dealer Wins :(', '#f06');
 				}
 			}
 		break;
