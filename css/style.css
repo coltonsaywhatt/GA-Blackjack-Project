@@ -1,9 +1,11 @@
-* { box-sizing: border-box; }
+* {
+	box-sizing: border-box;
+}
 
 .audio {
-    top: 0px;
-    right: 0px;
-    position: fixed;
+	top: 0px;
+	right: 0px;
+	position: fixed;
 }
 
 .btn_table {
@@ -21,14 +23,14 @@ button {
 	letter-spacing: 4px;
 	text-transform: uppercase;
 	white-space: nowrap;
-    cursor: pointer;
+	cursor: pointer;
 }
 
 button:active {
-    background-color: transparent;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
-  }
+	background-color: transparent;
+	box-shadow: 0 5px #666;
+	transform: translateY(4px);
+}
 
 .table {
 	position: relative;
@@ -40,9 +42,10 @@ button:active {
 	perspective: 100vw;
 	padding: 14px;
 }
+
 img {
-    width: 8.0em;
-  	height: 11em;   
+	width: 8.0em;
+	height: 11em;
 }
 
 .table_middle {
@@ -97,17 +100,12 @@ img {
 	margin: 0;
 }
 
-.pscore, .dscore {
-	font-size: 20px;
-
-}
-
 body {
-    overflow: hidden;
-    position: relative;
-    min-height: 525px;
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden;
-    background: linear-gradient(to bottom right, #b968c5, skyblue);
+	overflow: hidden;
+	position: relative;
+	min-height: 525px;
+	height: 100vh;
+	width: 100vw;
+	overflow: hidden;
+	background: linear-gradient(to bottom right, #b968c5, skyblue);
 }

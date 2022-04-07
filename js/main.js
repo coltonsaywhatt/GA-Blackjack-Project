@@ -2,21 +2,24 @@
 const suits = ['c', 'd', 'h', 's'];
 const faces = ['A', '02', '03', '04', '05', '06', '07', '08', '09', '10', 'J', 'Q', 'K'];
 const masterDeck = buildMasterDeck();
-
+const MSG_LOOKUP = {
+  null: 'Good Luck!',
+  'T': "It's a Push",
+  'P': 'Player Wins!',
+  'D': 'Dealer Wins',
+  'PBJ': 'Player Has Blackjack 😃',
+  'DBJ': 'Dealer Has Blackjack 😔',
+};
 /*----- app's state (variables) -----*/
 let gameStarted = false;
 let gameOver = false;
 let playerWon = false;
-
 let playerCards;
 let dealerCards;
-
 let dTotal;
 let pTotal;
-let outcome;
-
 let shuffledDeck;
-
+let outcome;
 /*----- cached element references -----*/
 let dealButton = document.querySelector('#deal-button');
 let hitButton = document.querySelector('#hit-button');
@@ -24,29 +27,20 @@ let standButton = document.querySelector('#stand-button');
 let playButton = document.querySelector('#playAgain-button');
 let playerCardContainer = document.getElementById('player-cards')
 let dealerCardContainer = document.getElementById('dealer-cards')
-
-
 const playerTotalEl = document.getElementById('player-total');
 const dealerTotalEl = document.getElementById('dealer-total');
-
 const setGameOver = (msg, color) => {
 	document.querySelector('.gameOver__msg').setAttribute('data-msg', msg);
 	document.querySelector('.gameOver__msg').style.color = color;
 	document.querySelector('.gameOver').classList.add('active');
 }
-
 /*----- event listeners -----*/
 
 // DO NOT TOUCH!!!!!!
-
 hitButton.addEventListener('click', hit);
-
 standButton.addEventListener('click', stand);
-
 dealButton.addEventListener('click', dealCards);
-
 playButton.addEventListener('click', init);
-
 /*----- functions -----*/
 
 init();
@@ -95,48 +89,25 @@ function dealCards() {
   hitButton.style.display = 'inline';
   standButton.style.display = 'inline';
   dealButton.style.display = 'none';
-
   gameStarted = true;
   gameOver = false;
   playerWon = false
-
   dealerCards = [getNextCard(), getNextCard()];
   playerCards = [getNextCard(), getNextCard()];
-
   dTotal = getHandTotal(dealerCards);
   pTotal = getHandTotal(playerCards);
-
   checkForBlackJack();
-  render();
-  
+  render();  
 }
 
 function renderPlayerHand() {
-  // playerCards.forEach(function(playerCard) {
-  //   const cardEl = document.createElement('div');
-  //   cardEl.className = `card ${playerCard.face}`;
-  //   playerCardContainer.appendChild(cardEl); 
-  // })
-
   playerTotalEl.innerHTML = pTotal;  
   playerCardContainer.innerHTML = playerCards.map(card => `<div class="card ${card.face}"></div>`).join('');
 }
 
 function renderDealerHand() {
-  // dealerCards.forEach(function(dealerCard, idx) {
-  //   if(idx === 1) {
-  //     const cardEl = document.createElement('div');
-  //     cardEl.className = `card back`;
-  //     dealerCardContainer.appendChild(cardEl);
-  //   } else {
-  //     const cardEl = document.createElement('div');
-  //   cardEl.className = `card ${dealerCard.face}`;
-  //   dealerCardContainer.appendChild(cardEl); 
-  //   }       
-  // })
-
-  dealerTotalEl.innerHTML = outcome ? dTotal : '??';
-  dealerCardContainer.innerHTML = dealerCards.map((card, idx) => `<div class="card ${idx === 1 && !outcome ? 'back' : card.face}"></div>`).join('');
+  dealerTotalEl.innerHTML = gameOver ? dTotal : '??';
+  dealerCardContainer.innerHTML = dealerCards.map((card, idx) => `<div class="card ${idx === 1 && !gameOver ? 'back' : card.face}"></div>`).join('');
 }
 
 function clearHand() {
@@ -198,17 +169,19 @@ function checkForBlackJack() {
         playerWon = true;
         gameOver = true;
         setGameOver('You Win! 😃', '#0f8');
-    } else if (pTotal == dTotal) {
+    } else if (pTotal >= 17 && pTotal == dTotal) {
       playerWon = false;
       gameOver = true;
       setGameOver("It's a Push!", '#80f');
     } else if(gameOver) {
-        if (pTotal > dTotal) {
-            setGameOver('You Win! 😃', '#0f8');
+        if (pTotal > dTotal) {            
             playerWon = true;
+            gameOver = true;
+            setGameOver('You Win! 😃', '#0f8');
         } else {
-            setGameOver('Dealer Wins 😔', '#f06');
             playerWon = false;
+            gameOver = true;
+            setGameOver('Dealer Wins 😔', '#f06');
         }
     }
 }
