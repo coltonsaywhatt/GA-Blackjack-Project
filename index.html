@@ -14,42 +14,37 @@
             <div class='table'>
                 <div class='table_dealer'>
                     <div id="dealer-cards"></div>
-                        <div>Dealer Total: <span id="dealer-total"></span></div>
-                        <!-- Cards will appear here. -->                       
-                    
+                        <div class="dScore">Dealer Total: <span id="dealer-total"></span></div>
+                        <!-- Cards will appear here. -->                  
                 </div>
-
                 <div class='table_middle'>
                     <div id="master-deck" class="card-container">
                         <!-- Deck of cards will appear here. -->
                         <div class="card back"></div>
                     </div>                        
                 </div>
-
                 <div class='table_player'>
                     <div id="player-cards"></div>
-                        <div>Player Total: <span id="player-total"></span></div>
-                       <!-- Cards will appear here. -->
-                    
+                        <div class="pScore">Player Total: <span id="player-total"></span></div>
+                       <!-- Cards will appear here. -->                    
                 </div>
                 <div class="btn_table"">
                     <button id="hit-button" class='btn-hit'>&#9824 Hit</button>
-                    <button id="stay-button" class='btn-stay'>&#9827 Stand</button>
+                    <button id="stand-button" class='btn-stand'>&#9827 Stand</button>
                     <br>
-                    <button id="deal-button" class='btn-deal'>&#x1F0AD Deal</button>
-                    <div class='gameOver'>
-                        <div class='gameOver__msg'>
-                            <button id="playAgain-button" class='btn-reset'>Play Again</button>
-                        </div>
-                    </div>
+                    <button id="deal-button" class='btn-deal'>&#x1F0AD Deal</button>                    
                 </div>    
             </div>               
             </div>
-
             <div class="audio">
                 <audio controls>
                     <source src="https://drive.google.com/uc?export=download&id=1m4nJ-2TzX73tyvZp36MgphJv6z6NZAGF" type="audio/mp3">
             </audio> 
     </div>
+    <div class='gameOver'>
+        <div class='gameOver__msg'>
+            <button id="playAgain-button" class='btn-reset'>Play Again</button>
+        </div>
+    </div>    
 </body>
 </html>

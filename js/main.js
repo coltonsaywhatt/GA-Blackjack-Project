@@ -3,15 +3,6 @@ const suits = ['c', 'd', 'h', 's'];
 const faces = ['A', '02', '03', '04', '05', '06', '07', '08', '09', '10', 'J', 'Q', 'K'];
 const masterDeck = buildMasterDeck();
 
-// const MSG_LOOKUP = {
-//   null: 'Good Luck!',
-//   'T': "It's a Push",
-//   'P': 'Player Wins!',
-//   'D': 'Dealer Wins',
-//   'PBJ': 'Player Has Blackjack 😃',
-//   'DBJ': 'Dealer Has Blackjack 😔',
-// };
-
 /*----- app's state (variables) -----*/
 let gameStarted = false;
 let gameOver = false;
@@ -29,7 +20,7 @@ let shuffledDeck;
 /*----- cached element references -----*/
 let dealButton = document.querySelector('#deal-button');
 let hitButton = document.querySelector('#hit-button');
-let stayButton = document.querySelector('#stay-button');
+let standButton = document.querySelector('#stand-button');
 let playButton = document.querySelector('#playAgain-button');
 let playerCardContainer = document.getElementById('player-cards')
 let dealerCardContainer = document.getElementById('dealer-cards')
@@ -50,20 +41,21 @@ const setGameOver = (msg, color) => {
 
 hitButton.addEventListener('click', hit);
 
-stayButton.addEventListener('click', stand);
+standButton.addEventListener('click', stand);
 
 dealButton.addEventListener('click', dealCards);
 
-// playButton.addEventListener('click', playAgain)
+playButton.addEventListener('click', init);
 
 /*----- functions -----*/
 
 init();
 
 function init() {
+  document.querySelector('.gameOver').classList.remove('active');
+  dealButton.style.display = 'inline';
   hitButton.style.display = 'none';
-  stayButton.style.display = 'none';
-  // playButton.style.display = 'none';
+  standButton.style.display = 'none';
   shuffledDeck = getNewShuffledDeck();
   playerCards = [];
   dealerCards = [];
@@ -101,8 +93,7 @@ function getNewShuffledDeck() {
 
 function dealCards() {
   hitButton.style.display = 'inline';
-  stayButton.style.display = 'inline';
-  // playButton.style.display = 'none';
+  standButton.style.display = 'inline';
   dealButton.style.display = 'none';
 
   gameStarted = true;
@@ -115,13 +106,10 @@ function dealCards() {
   dTotal = getHandTotal(dealerCards);
   pTotal = getHandTotal(playerCards);
 
+  checkForBlackJack();
   render();
+  
 }
-
-// player.Cards[0].value + playerCards[1].value
-// creating a new div element
-// we are creating a variable that is storing our class name to ref face value of our object which will be added to our div
-// creating a card variable that creates a div that is added to our player container
 
 function renderPlayerHand() {
   // playerCards.forEach(function(playerCard) {
@@ -130,8 +118,7 @@ function renderPlayerHand() {
   //   playerCardContainer.appendChild(cardEl); 
   // })
 
-  playerTotalEl.innerHTML = pTotal;
-  
+  playerTotalEl.innerHTML = pTotal;  
   playerCardContainer.innerHTML = playerCards.map(card => `<div class="card ${card.face}"></div>`).join('');
 }
 
@@ -149,7 +136,6 @@ function renderDealerHand() {
   // })
 
   dealerTotalEl.innerHTML = outcome ? dTotal : '??';
-
   dealerCardContainer.innerHTML = dealerCards.map((card, idx) => `<div class="card ${idx === 1 && !outcome ? 'back' : card.face}"></div>`).join('');
 }
 
@@ -178,6 +164,7 @@ function hit() {
 function stand() {
   gameOver = true;
   checkForBlackJack();
+  render();
 }
 
 function getHandTotal(hand) {
@@ -194,60 +181,34 @@ function getHandTotal(hand) {
   return total;
 }
 
-
 function checkForBlackJack() {
     if(gameOver) {
         while(dTotal < pTotal && pTotal <= 21 && dTotal <= 21) {
             dealerCards.push(getNextCard());
-            dTotal = getHandTotal(dealerCards);
+            dTotal = getHandTotal(dealerCards);           
         }
         render();
-        evaluate('player');
-        evaluate('dealer');
     }
     if (pTotal > 21) {
         playerWon = false;
         gameOver = true;
+        setGameOver('Bust!', '#f06');
+				return;
     } else if (dTotal > 21) {
         playerWon = true;
         gameOver = true;
-    } else if (gameOver) {
+        setGameOver('You Win! 😃', '#0f8');
+    } else if (pTotal == dTotal) {
+      playerWon = false;
+      gameOver = true;
+      setGameOver("It's a Push!", '#80f');
+    } else if(gameOver) {
         if (pTotal > dTotal) {
+            setGameOver('You Win! 😃', '#0f8');
             playerWon = true;
         } else {
+            setGameOver('Dealer Wins 😔', '#f06');
             playerWon = false;
         }
     }
-}
-
-function evaluate (user) {
-  switch (user) {
-		case 'player':
-			if (pTotal > 21) {
-				setGameOver('Bust!', '#f06');
-				return;
-			} else if (pTotal == 21) {
-				setGameOver('You Win!', '#0f8');
-				return;
-			}
-		break;
-			
-		case 'dealer':
-			if (pTotal > 21) {
-				setGameOver('You Win!', '#0f8');
-				return;
-			} else if (pTotal == 21) {
-				setGameOver('Dealer Wins :(', '#f06');
-				return;
-			} else {
-				if (pTotal > dTotal) {
-					setGameOver('You Win!', '#0f8');
-				} else if (pTotal == dTotal) {
-					setGameOver('It was a Draw!', '#80f');
-				} else {
-					setGameOver('Dealer Wins :(', '#f06');
-				}
-			}
-		break;
-	}
 }

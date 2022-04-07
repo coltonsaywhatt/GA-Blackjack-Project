@@ -55,7 +55,7 @@ img {
 .table_dealer, .table_player {
 	position: relative;
 	padding: 14px;
-	border: 4px dotted #fff;
+	/* border: 4px dotted #fff; */
 }
 
 .gameOver {
@@ -78,7 +78,6 @@ img {
 	left: 0;
 	width: 100%;
 	text-align: center;
-	-webkit-transform: translateY(-50%);
 	transform: translateY(-50%);
 }
 
@@ -96,6 +95,11 @@ img {
 
 .btn-reset {
 	margin: 0;
+}
+
+.pscore, .dscore {
+	font-size: 20px;
+
 }
 
 body {
