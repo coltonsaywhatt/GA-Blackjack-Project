@@ -3,16 +3,26 @@ const suits = ['c', 'd', 'h', 's'];
 const faces = ['A', '02', '03', '04', '05', '06', '07', '08', '09', '10', 'J', 'Q', 'K'];
 const masterDeck = buildMasterDeck();
 
+const MSG_LOOKUP = {
+  null: 'Good Luck!',
+  'T': "It's a Push",
+  'P': 'Player Wins!',
+  'D': 'Dealer Wins',
+  'PBJ': 'Player Has Blackjack 😃',
+  'DBJ': 'Dealer Has Blackjack 😔',
+};
+
 /*----- app's state (variables) -----*/
 let gamesStarted = false;
 let gameOver = false;
 let playerWon = false;
 
-let playerCards = [];
-let dealerCards = [];
+let playerCards;
+let dealerCards;
 
-// let dTotal;
-// let pTotal;
+let dTotal;
+let pTotal;
+let outcome;
 
 let shuffledDeck;
 
@@ -25,8 +35,8 @@ let playerCardContainer = document.getElementById('player-cards')
 let dealerCardContainer = document.getElementById('dealer-cards')
 
 
-// const playerTotalEl = document.getElementById('player-total');
-// const dealerTotalEl = document.getElementById('dealer-total');
+const playerTotalEl = document.getElementById('player-total');
+const dealerTotalEl = document.getElementById('dealer-total');
 
 /*----- event listeners -----*/
 
@@ -34,7 +44,7 @@ let dealerCardContainer = document.getElementById('dealer-cards')
 
 hitButton.addEventListener('click', hit);
 
-stayButton.addEventListener('click', stay);
+stayButton.addEventListener('click', stand);
 
 dealButton.addEventListener('click', dealCards);
 
@@ -49,7 +59,9 @@ function init() {
   stayButton.style.display = 'none';
   playButton.style.display = 'none';
   shuffledDeck = getNewShuffledDeck();
-  // pTotal = dTotal = 0;
+  playerCards = [];
+  dealerCards = [];
+  pTotal = dTotal = 0;
   render();
 }
 
@@ -95,8 +107,8 @@ function dealCards() {
   dealerCards = [getNextCard(), getNextCard()];
   playerCards = [getNextCard(), getNextCard()];
 
-  // dTotal = getHandTotal(dealerCards);
-  // pTotal = getHandTotal(playerCards);
+  dTotal = getHandTotal(dealerCards);
+  pTotal = getHandTotal(playerCards);
 
   render();
 }
@@ -112,7 +124,10 @@ function renderPlayerHand() {
     cardEl.className = `card ${playerCard.face}`;
     playerCardContainer.appendChild(cardEl); 
   })
-  // playerTotalEl.innerHTML = pTotal;    
+
+  playerTotalEl.innerHTML = pTotal;
+  
+  // playerHandEl.innerHTML = playerCards.map(card => `<div class="card ${card.face}"></div>`).join('');
 }
 
 function renderDealerHand() {
@@ -127,7 +142,10 @@ function renderDealerHand() {
     dealerCardContainer.appendChild(cardEl); 
     }       
   })
-  // dealerTotalEl.innerHTML = outcome ? dTotal : '??';
+
+  dealerTotalEl.innerHTML = outcome ? dTotal : '??';
+
+  // dealerCardContainer.innerHTML = dealerCards.map((card, idx) => `<div class="card ${idx === 1 && !outcome ? 'back' : card.face}"></div>`).join('');
 }
 
 function clearHand() {
@@ -151,10 +169,23 @@ function hit() {
   render();
 }
 
-function stay() {
+function stand() {
   // gameOver = true;
   // checkForBlackJack();
+}
 
+function getHandTotal(hand) {
+  let total = 0;
+  let aces = 0;
+  hand.forEach(function(card) {
+    total += card.value;
+    if (card.value === 11) aces++;
+  });
+  while (total > 21 && aces) {
+    total -= 10;
+    aces--;
+  }
+  return total;
 }
 
 function playAgain() {
@@ -166,11 +197,9 @@ function playAgain() {
 
 
 // function checkForBlackJack() {
-//   updateScores();
 //     if(gameOver) {
 //         while(dealerScore < playerScore && playerScore <= 21 && dealerScore <= 21) {
 //             dealerCards.push(getNextCard());
-//             updateScores();
 //         }
 //     }
 //     if (playerScore > 21) {
