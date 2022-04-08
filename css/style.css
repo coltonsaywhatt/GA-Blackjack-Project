@@ -1,99 +1,98 @@
 * {
-    box-sizing: border-box;
-}
-@import url('https://fonts.googleapis.com/css2?family=Mitr&display=swap');
-.audio {
-    top: 0px;
-    right: 0px;
-    position: fixed;
-}
-.btn_table {
-    margin-top: 20px;
-}
-button {
-    margin: 5px;
-    padding: 8px 15px;
-    min-width: 100px;
-    background-color: #fff;
-    border: 1px solid rgb(0, 0, 0);
-    border-radius: 15px;
-    color: #000;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    white-space: nowrap;
-    cursor: pointer;
-}
-button:active {
-    background-color: transparent;
-    box-shadow: 0 5px #666;
-    transform: translateY(4px);
-}
-.table {
-    position: relative;
-    display: inline-block;
-    margin: 16px auto;
-    margin-left: 50%;
-    text-align: center;
-    transform: translateX(-50%);
-    perspective: 100vw;
-    padding: 14px;
-}
-img {
-    width: 8.0em;
-    height: 11em;
-}
-.table_middle {
-    padding: 14px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.table_dealer, .table_player {
-    position: relative;
-    padding: 14px;
-    /* border: 4px dotted #fff; */
-}
-.gameOver {
-    display: none;
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(24, 24, 32, 0.9);
-}
-.gameOver.active {
-    display: block;
-}
-.gameOver__msg {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    text-align: center;
-    transform: translateY(-50%);
-}
-.gameOver__msg::before {
-    content: attr(data-msg);
-    position: relative;
-    display: block;
-    width: 100%;
-    margin-bottom: 8px;
-    font-family: sans-serif;
-    font-size: 1.5em;
-    text-align: center;
-    text-transform: uppercase;
-}
-.btn-reset {
-    margin: 0;
-}
-body {
-    position: relative;
-    min-height: 525px;
-    height: 100vh;
-    width: 100vw;
-    background: linear-gradient(to bottom right, #b968c5, skyblue);
-}
-p {
-    font-family: 'Mitr', sans-serif;
-}
+	box-sizing: border-box;
+  }
+  @import url('https://fonts.googleapis.com/css2?family=Mitr&display=swap');
+  .audio {
+	top: 0px;
+	right: 0px;
+	position: fixed;
+  }
+  .btn_table {
+	margin-top: 20px;
+  }
+  button {
+	margin: 5px;
+	padding: 8px 15px;
+	min-width: 100px;
+	background-color: #fff;
+	border: 1px solid rgb(0, 0, 0);
+	border-radius: 15px;
+	color: #000;
+	letter-spacing: 4px;
+	text-transform: uppercase;
+	white-space: nowrap;
+	cursor: pointer;
+  }
+  button:active {
+	background-color: transparent;
+	box-shadow: 0 5px #666;
+	transform: translateY(4px);
+  }
+  .table {
+	position: relative;
+	display: inline-block;
+	margin: 16px auto;
+	margin-left: 50%;
+	text-align: center;
+	transform: translateX(-50%);
+	perspective: 100vw;
+	padding: 14px;
+  }
+  img {
+	width: 8.0em;
+	height: 11em;
+  }
+  .table_middle {
+	padding: 14px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+  }
+  .table_dealer, .table_player {
+	position: relative;
+	padding: 14px;
+  }
+  .gameOver {
+	display: none;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: rgba(24, 24, 32, 0.9);
+  }
+  .gameOver.active {
+	display: block;
+  }
+  .gameOver__msg {
+	position: absolute;
+	top: 50%;
+	left: 0;
+	width: 100%;
+	text-align: center;
+	transform: translateY(-50%);
+  }
+  .gameOver__msg::before {
+	content: attr(data-msg);
+	position: relative;
+	display: block;
+	width: 100%;
+	margin-bottom: 8px;
+	font-family: sans-serif;
+	font-size: 1.5em;
+	text-align: center;
+	text-transform: uppercase;
+  }
+  .btn-reset {
+	margin: 0;
+  }
+  body {
+	position: relative;
+	min-height: 525px;
+	height: 100vh;
+	width: 100vw;
+	background: linear-gradient(to bottom right, #b968c5, skyblue);
+  }
+  p {
+	font-family: 'Mitr', sans-serif;
+  }

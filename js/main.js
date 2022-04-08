@@ -2,14 +2,6 @@
 const suits = ['c', 'd', 'h', 's'];
 const faces = ['A', '02', '03', '04', '05', '06', '07', '08', '09', '10', 'J', 'Q', 'K'];
 const masterDeck = buildMasterDeck();
-const MSG_LOOKUP = {
-  null: 'Good Luck!',
-  'T': "It's a Push",
-  'P': 'Player Wins!',
-  'D': 'Dealer Wins',
-  'PBJ': 'Player Has Blackjack 😃',
-  'DBJ': 'Dealer Has Blackjack 😔',
-};
 /*----- app's state (variables) -----*/
 let gameStarted = false;
 let gameOver = false;
@@ -19,7 +11,6 @@ let dealerCards;
 let dTotal;
 let pTotal;
 let shuffledDeck;
-let outcome;
 /*----- cached element references -----*/
 let dealButton = document.querySelector('#deal-button');
 let hitButton = document.querySelector('#hit-button');
@@ -30,9 +21,9 @@ let dealerCardContainer = document.getElementById('dealer-cards')
 const playerTotalEl = document.getElementById('player-total');
 const dealerTotalEl = document.getElementById('dealer-total');
 const setGameOver = (msg, color) => {
-  document.querySelector('.gameOver__msg').setAttribute('data-msg', msg);
-  document.querySelector('.gameOver__msg').style.color = color;
-  document.querySelector('.gameOver').classList.add('active');
+	document.querySelector('.gameOver__msg').setAttribute('data-msg', msg);
+	document.querySelector('.gameOver__msg').style.color = color;
+	document.querySelector('.gameOver').classList.add('active');
 }
 /*----- event listeners -----*/
 // DO NOT TOUCH!!!!!!
@@ -64,7 +55,7 @@ function buildMasterDeck() {
   const deck = [];
   suits.forEach(function(suit) {
     faces.forEach(function(rank) {
-      deck.push({
+      deck.push({          
         face: `${suit}${rank}`,
         value: Number(rank) || (rank === 'A' ? 11 : 10)
       });
@@ -95,11 +86,11 @@ function dealCards() {
   dTotal = getHandTotal(dealerCards);
   pTotal = getHandTotal(playerCards);
   checkForBlackJack();
-  render();
+  render();  
 }
 
 function renderPlayerHand() {
-  playerTotalEl.innerHTML = pTotal;
+  playerTotalEl.innerHTML = pTotal;  
   playerCardContainer.innerHTML = playerCards.map(card => `<div class="card ${card.face}"></div>`).join('');
 }
 
@@ -112,6 +103,7 @@ function clearHand() {
   Array.from(playerCardContainer.children).forEach(function(card) {
     playerCardContainer.removeChild(card)
   })
+
   Array.from(dealerCardContainer.children).forEach(function(card) {
     dealerCardContainer.removeChild(card)
   })

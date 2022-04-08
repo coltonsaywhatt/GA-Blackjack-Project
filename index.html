@@ -1,51 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta content="IE=edge" http-equiv="X-UA-Compatible">
-	<meta content="width=device-width, initial-scale=1.0" name="viewport">
-	<link href="css/card-deck-css/css/cardstarter.css" rel="stylesheet">
-	<link href="css/style.css" rel="stylesheet">
-	<script defer src="js/main.js">
-	</script>
-	<title>GA Blackjack Project</title>
+  <meta charset="UTF-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <link href="css/card-deck-css/css/cardstarter.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link rel="shortcut icon" type="image/png" href="https://i.ibb.co/K9GhgF9/68747470733a2f2f692e6962622e636f2f37587a426b524d2f626b2d6c6f676f2e706e67-1.png">
+  <script defer src="js/main.js">
+  </script>
+  <title>GA Blackjack Project</title>
 </head>
 <body>
-	<div class="blackjack">
-		<div class='table'>
-			<div class='table_dealer'>
-				<div id="dealer-cards"></div>
-                <!-- Cards will appear here. -->
-				<div class="dScore">
-					<p>Dealer Total: <span id="dealer-total"></span></p>
-				</div>
-			</div>
-			<div class='table_middle'>
-				<div class="card-container" id="master-deck">
-					<div class="card back"></div>
-                    <!-- Deck of cards will appear here. -->
-				</div>
-			</div>
-			<div class='table_player'>
-				<div id="player-cards"></div>
-				<div class="pScore">
-					<p>Player Total: <span id="player-total"></span></p>
-                    <!-- Cards will appear here. -->
-                </div>
-			</div>
-			<div class="btn_table">
-				<button class='btn-hit' id="hit-button">&#9824 Hit</button> <button class='btn-stand' id="stand-button">&#9827 Stand</button><br>
-				<button class='btn-deal' id="deal-button">&#x1F0AD Deal</button>
-			</div>
-		</div>
-	</div>
-	<div class="audio">
-		<audio controls=""><source src="https://drive.google.com/uc?export=download&id=1m4nJ-2TzX73tyvZp36MgphJv6z6NZAGF" type="audio/mp3"></audio>
-	</div>
-	<div class='gameOver'>
-		<div class='gameOver__msg'>
-			<button class='btn-reset' id="playAgain-button">Play Again</button>
-		</div>
-	</div>
+  <div class="blackjack">
+    <div class='table'>
+      <div class='table_dealer'>
+        <div id="dealer-cards"></div>
+        <div class="dScore">
+          <p>Dealer Total: <span id="dealer-total"></span></p>
+        </div>
+      </div>
+      <div class='table_middle'>
+        <div class="card-container" id="master-deck">
+          <div class="card back"></div>
+        </div>
+      </div>
+      <div class='table_player'>
+        <div id="player-cards"></div>
+        <div class="pScore">
+          <p>Player Total: <span id="player-total"></span></p>
+        </div>
+      </div>
+      <div class="btn_table">
+        <button class='btn-hit' id="hit-button">&#9824 Hit</button> <button class='btn-stand' id="stand-button">&#9827 Stand</button><br>
+        <button class='btn-deal' id="deal-button">&#x1F0AD Deal</button>
+      </div>
+    </div>
+  </div>
+  <div class="audio">
+    <audio controls=""><source src="https://drive.google.com/uc?export=download&id=1m4nJ-2TzX73tyvZp36MgphJv6z6NZAGF" type="audio/mp3"></audio>
+  </div>
+  <div class='gameOver'>
+    <div class='gameOver__msg'>
+      <button class='btn-reset' id="playAgain-button">Play Again</button>
+    </div>
+  </div>
 </body>
 </html>
