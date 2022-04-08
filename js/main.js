@@ -30,19 +30,17 @@ let dealerCardContainer = document.getElementById('dealer-cards')
 const playerTotalEl = document.getElementById('player-total');
 const dealerTotalEl = document.getElementById('dealer-total');
 const setGameOver = (msg, color) => {
-	document.querySelector('.gameOver__msg').setAttribute('data-msg', msg);
-	document.querySelector('.gameOver__msg').style.color = color;
-	document.querySelector('.gameOver').classList.add('active');
+  document.querySelector('.gameOver__msg').setAttribute('data-msg', msg);
+  document.querySelector('.gameOver__msg').style.color = color;
+  document.querySelector('.gameOver').classList.add('active');
 }
 /*----- event listeners -----*/
-
 // DO NOT TOUCH!!!!!!
 hitButton.addEventListener('click', hit);
 standButton.addEventListener('click', stand);
 dealButton.addEventListener('click', dealCards);
 playButton.addEventListener('click', init);
 /*----- functions -----*/
-
 init();
 
 function init() {
@@ -66,7 +64,7 @@ function buildMasterDeck() {
   const deck = [];
   suits.forEach(function(suit) {
     faces.forEach(function(rank) {
-      deck.push({          
+      deck.push({
         face: `${suit}${rank}`,
         value: Number(rank) || (rank === 'A' ? 11 : 10)
       });
@@ -97,11 +95,11 @@ function dealCards() {
   dTotal = getHandTotal(dealerCards);
   pTotal = getHandTotal(playerCards);
   checkForBlackJack();
-  render();  
+  render();
 }
 
 function renderPlayerHand() {
-  playerTotalEl.innerHTML = pTotal;  
+  playerTotalEl.innerHTML = pTotal;
   playerCardContainer.innerHTML = playerCards.map(card => `<div class="card ${card.face}"></div>`).join('');
 }
 
@@ -114,7 +112,6 @@ function clearHand() {
   Array.from(playerCardContainer.children).forEach(function(card) {
     playerCardContainer.removeChild(card)
   })
-
   Array.from(dealerCardContainer.children).forEach(function(card) {
     dealerCardContainer.removeChild(card)
   })
@@ -153,35 +150,43 @@ function getHandTotal(hand) {
 }
 
 function checkForBlackJack() {
-    if(gameOver) {
-        while(dTotal < pTotal && pTotal <= 21 && dTotal <= 21) {
-            dealerCards.push(getNextCard());
-            dTotal = getHandTotal(dealerCards);           
-        }
-        render();
+  if (gameOver) {
+    while (dTotal < pTotal && pTotal <= 21 && dTotal <= 21) {
+      dealerCards.push(getNextCard());
+      dTotal = getHandTotal(dealerCards);
     }
-    if (pTotal > 21) {
-        playerWon = false;
-        gameOver = true;
-        setGameOver('Bust!', '#f06');
-				return;
-    } else if (dTotal > 21) {
-        playerWon = true;
-        gameOver = true;
+    render();
+  }
+  if (pTotal > 21) {
+    playerWon = false;
+    gameOver = true;
+    setTimeout(() => {
+      setGameOver('Bust!', '#f06');
+    }, 1000);
+    return;
+  } else if (dTotal > 21) {
+    playerWon = true;
+    gameOver = true;
+    setTimeout(() => {
+      setGameOver('You Win! 😃', '#0f8');
+    }, 1000);
+  } else if (pTotal >= 17 && pTotal == dTotal) {
+    playerWon = false;
+    gameOver = true;
+    setGameOver("It's a Push!", '#80f');
+  } else if (gameOver) {
+    if (pTotal > dTotal) {
+      playerWon = true;
+      gameOver = true;
+      setTimeout(() => {
         setGameOver('You Win! 😃', '#0f8');
-    } else if (pTotal >= 17 && pTotal == dTotal) {
+      }, 1000);
+    } else {
       playerWon = false;
       gameOver = true;
-      setGameOver("It's a Push!", '#80f');
-    } else if(gameOver) {
-        if (pTotal > dTotal) {            
-            playerWon = true;
-            gameOver = true;
-            setGameOver('You Win! 😃', '#0f8');
-        } else {
-            playerWon = false;
-            gameOver = true;
-            setGameOver('Dealer Wins 😔', '#f06');
-        }
+      setTimeout(() => {
+        setGameOver('Dealer Wins 😔', '#f06');
+      }, 1000);
     }
+  }
 }
