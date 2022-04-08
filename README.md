@@ -48,6 +48,10 @@ Black jack game made in Javascript.
 
 - [ ] Add a custom audio player
 
+- [ ] Add card animations
+
+- [ ] Display total value on card hover
+
 
 ## :copyright: License
 
