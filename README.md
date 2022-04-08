@@ -36,7 +36,6 @@ Black jack game made in Javascript.
 
 <br>
 
-
 ## :fast_forward: Next Steps   
 
 ### Upcoming Features
@@ -46,6 +45,8 @@ Black jack game made in Javascript.
 - [ ] Add a bet functionality with wager   
 
 - [ ] Add ability to double down
+
+- [ ] Add a custom audio player
 
 
 ## License
