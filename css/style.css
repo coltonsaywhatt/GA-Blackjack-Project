@@ -51,7 +51,6 @@
   .table_dealer, .table_player {
 	position: relative;
 	padding: 14px;
-	/* border: 4px dotted #fff; */
   }
   .gameOver {
 	display: none;
