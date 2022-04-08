@@ -19,10 +19,8 @@ Black jack game made in Javascript.
 
 **Screenshots:**
 
-<img src= "https://i.ibb.co/ys54qVF/deal.jpg" height="300px" width="300px" />
-<img src= "https://i.ibb.co/P5ZCwy8/win.jpg" height="300px" width="300px" />
-<img src= "https://i.ibb.co/rHypJSP/bust.jpg" height="300px" width="300px" />
-<img src= "https://i.ibb.co/m833xWJ/push.jpg" height="300px" width="300px" />
+<img src= "https://i.ibb.co/ys54qVF/deal.jpg" height="400px" width="400px" /> <img src= "https://i.ibb.co/P5ZCwy8/win.jpg" height="400px" width="400px" />
+<img src= "https://i.ibb.co/rHypJSP/bust.jpg" height="400px" width="400px" /> <img src= "https://i.ibb.co/m833xWJ/push.jpg" height="400px" width="400px" />
 
 
 ## Blackjack Game overview:
