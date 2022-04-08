@@ -12,7 +12,7 @@
 
 #
 
-## Blackjack Game overview:
+## :black_joker: Blackjack Game Overview:
 
 Blackjack, also known as twenty-one, is a comparing card game between usually several players and a dealer, where each player in turn competes against the dealer, but players do not play against each other. It is played with one or more decks of 52 cards, and is the most widely played casino banking game in the world.[1]. The objective of the game is to beat the dealer in one of the following ways:
 
@@ -22,7 +22,7 @@ Blackjack, also known as twenty-one, is a comparing card game between usually se
 
 More info in [Wikipedia](https://en.wikipedia.org/wiki/Blackjack)
 
-## :atom_symbol: Getting started: 
+## :atom_symbol: Getting Started: 
 Black jack game made in Javascript. 
 [Launch Game](https://coltonsaywhatt.github.io/GA-Blackjack-Project/) 
 
@@ -49,6 +49,6 @@ Black jack game made in Javascript.
 - [ ] Add a custom audio player
 
 
-## License
+## :copyright: License
 
 \* See [license.txt](https://github.com/coltonsaywhatt/GA-Blackjack-Project/blob/main/LICENSE.text) for usage details.
