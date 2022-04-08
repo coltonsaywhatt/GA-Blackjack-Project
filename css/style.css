@@ -1,18 +1,16 @@
 * {
 	box-sizing: border-box;
-}
-
-.audio {
+  }
+  @import url('https://fonts.googleapis.com/css2?family=Mitr&display=swap');
+  .audio {
 	top: 0px;
 	right: 0px;
 	position: fixed;
-}
-
-.btn_table {
+  }
+  .btn_table {
 	margin-top: 20px;
-}
-
-button {
+  }
+  button {
 	margin: 5px;
 	padding: 8px 15px;
 	min-width: 100px;
@@ -24,15 +22,13 @@ button {
 	text-transform: uppercase;
 	white-space: nowrap;
 	cursor: pointer;
-}
-
-button:active {
+  }
+  button:active {
 	background-color: transparent;
 	box-shadow: 0 5px #666;
 	transform: translateY(4px);
-}
-
-.table {
+  }
+  .table {
 	position: relative;
 	display: inline-block;
 	margin: 16px auto;
@@ -41,27 +37,23 @@ button:active {
 	transform: translateX(-50%);
 	perspective: 100vw;
 	padding: 14px;
-}
-
-img {
+  }
+  img {
 	width: 8.0em;
 	height: 11em;
-}
-
-.table_middle {
+  }
+  .table_middle {
 	padding: 14px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-}
-
-.table_dealer, .table_player {
+  }
+  .table_dealer, .table_player {
 	position: relative;
 	padding: 14px;
 	/* border: 4px dotted #fff; */
-}
-
-.gameOver {
+  }
+  .gameOver {
 	display: none;
 	position: fixed;
 	top: 0;
@@ -69,22 +61,19 @@ img {
 	bottom: 0;
 	left: 0;
 	background-color: rgba(24, 24, 32, 0.9);
-}
-
-.gameOver.active {
+  }
+  .gameOver.active {
 	display: block;
-}
-
-.gameOver__msg {
+  }
+  .gameOver__msg {
 	position: absolute;
 	top: 50%;
 	left: 0;
 	width: 100%;
 	text-align: center;
 	transform: translateY(-50%);
-}
-
-.gameOver__msg::before {
+  }
+  .gameOver__msg::before {
 	content: attr(data-msg);
 	position: relative;
 	display: block;
@@ -94,18 +83,17 @@ img {
 	font-size: 1.5em;
 	text-align: center;
 	text-transform: uppercase;
-}
-
-.btn-reset {
+  }
+  .btn-reset {
 	margin: 0;
-}
-
-body {
-	overflow: hidden;
+  }
+  body {
 	position: relative;
 	min-height: 525px;
 	height: 100vh;
 	width: 100vw;
-	overflow: hidden;
 	background: linear-gradient(to bottom right, #b968c5, skyblue);
-}
+  }
+  p {
+	font-family: 'Mitr', sans-serif;
+  }

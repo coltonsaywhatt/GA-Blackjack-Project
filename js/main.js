@@ -2,14 +2,6 @@
 const suits = ['c', 'd', 'h', 's'];
 const faces = ['A', '02', '03', '04', '05', '06', '07', '08', '09', '10', 'J', 'Q', 'K'];
 const masterDeck = buildMasterDeck();
-const MSG_LOOKUP = {
-  null: 'Good Luck!',
-  'T': "It's a Push",
-  'P': 'Player Wins!',
-  'D': 'Dealer Wins',
-  'PBJ': 'Player Has Blackjack 😃',
-  'DBJ': 'Dealer Has Blackjack 😔',
-};
 /*----- app's state (variables) -----*/
 let gameStarted = false;
 let gameOver = false;
@@ -19,7 +11,6 @@ let dealerCards;
 let dTotal;
 let pTotal;
 let shuffledDeck;
-let outcome;
 /*----- cached element references -----*/
 let dealButton = document.querySelector('#deal-button');
 let hitButton = document.querySelector('#hit-button');
@@ -35,14 +26,12 @@ const setGameOver = (msg, color) => {
 	document.querySelector('.gameOver').classList.add('active');
 }
 /*----- event listeners -----*/
-
 // DO NOT TOUCH!!!!!!
 hitButton.addEventListener('click', hit);
 standButton.addEventListener('click', stand);
 dealButton.addEventListener('click', dealCards);
 playButton.addEventListener('click', init);
 /*----- functions -----*/
-
 init();
 
 function init() {
@@ -153,35 +142,43 @@ function getHandTotal(hand) {
 }
 
 function checkForBlackJack() {
-    if(gameOver) {
-        while(dTotal < pTotal && pTotal <= 21 && dTotal <= 21) {
-            dealerCards.push(getNextCard());
-            dTotal = getHandTotal(dealerCards);           
-        }
-        render();
+  if (gameOver) {
+    while (dTotal < pTotal && pTotal <= 21 && dTotal <= 21) {
+      dealerCards.push(getNextCard());
+      dTotal = getHandTotal(dealerCards);
     }
-    if (pTotal > 21) {
-        playerWon = false;
-        gameOver = true;
-        setGameOver('Bust!', '#f06');
-				return;
-    } else if (dTotal > 21) {
-        playerWon = true;
-        gameOver = true;
+    render();
+  }
+  if (pTotal > 21) {
+    playerWon = false;
+    gameOver = true;
+    setTimeout(() => {
+      setGameOver('Bust!', '#f06');
+    }, 1000);
+    return;
+  } else if (dTotal > 21) {
+    playerWon = true;
+    gameOver = true;
+    setTimeout(() => {
+      setGameOver('You Win! 😃', '#0f8');
+    }, 1000);
+  } else if (pTotal >= 17 && pTotal == dTotal) {
+    playerWon = false;
+    gameOver = true;
+    setGameOver("It's a Push!", '#80f');
+  } else if (gameOver) {
+    if (pTotal > dTotal) {
+      playerWon = true;
+      gameOver = true;
+      setTimeout(() => {
         setGameOver('You Win! 😃', '#0f8');
-    } else if (pTotal >= 17 && pTotal == dTotal) {
+      }, 1000);
+    } else {
       playerWon = false;
       gameOver = true;
-      setGameOver("It's a Push!", '#80f');
-    } else if(gameOver) {
-        if (pTotal > dTotal) {            
-            playerWon = true;
-            gameOver = true;
-            setGameOver('You Win! 😃', '#0f8');
-        } else {
-            playerWon = false;
-            gameOver = true;
-            setGameOver('Dealer Wins 😔', '#f06');
-        }
+      setTimeout(() => {
+        setGameOver('Dealer Wins 😔', '#f06');
+      }, 1000);
     }
+  }
 }
